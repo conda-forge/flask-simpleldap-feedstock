@@ -1,5 +1,5 @@
 {% set name = "Flask-SimpleLDAP" %}
-{% set version = "1.4.0" %}
+{% set version = "2.0.0" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,20 +7,20 @@ package:
 
 source:
   url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: 812f7a476317e3e4a66549d773d470617e4153f2024fb956872b8f0998765275
+  sha256: d829f8163bae6d61d841707fa8a88bdcaae4862332c1acc13864b24ca82eaf25
 
 build:
-  number: 6
+  number: 0
   script: "{{ PYTHON }} -m pip install . -vv"
-  skip: True  # [py2k or win]
+  noarch: python
 
 requirements:
   host:
     - pip
-    - python
+    - python >=3.8
   run:
-    - flask >=0.12.4
-    - python
+    - flask >=2.2.5
+    - python >=3.8
     - python-ldap >=3.0.0
 
 test:

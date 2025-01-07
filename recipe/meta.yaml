@@ -6,24 +6,27 @@ package:
   version: "{{ version }}"
 
 source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  url: "https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
   sha256: d829f8163bae6d61d841707fa8a88bdcaae4862332c1acc13864b24ca82eaf25
 
 build:
-  number: 0
+  number: 1
   script: "{{ PYTHON }} -m pip install . -vv"
   noarch: python
 
 requirements:
   host:
     - pip
-    - python >=3.8
+    - setuptools
+    - python {{ python_min }}
   run:
     - flask >=2.2.5
-    - python >=3.8
+    - python >={{ python_min }}
     - python-ldap >=3.0.0
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - flask_simpleldap
 

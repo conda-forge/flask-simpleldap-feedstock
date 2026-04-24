@@ -1,16 +1,16 @@
 {% set name = "Flask-SimpleLDAP" %}
-{% set version = "2.0.0" %}
+{% set version = "2.1.0" %}
 
 package:
   name: "{{ name|lower }}"
   version: "{{ version }}"
 
 source:
-  url: "https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: d829f8163bae6d61d841707fa8a88bdcaae4862332c1acc13864b24ca82eaf25
+  url: "https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') | lower }}-{{ version }}.tar.gz"
+  sha256: 1359a5e48a70700077a3960994a8ab173ab8bf1ca9e814e6ef6510e108deb085
 
 build:
-  number: 1
+  number: 0
   script: "{{ PYTHON }} -m pip install . -vv"
   noarch: python
 
